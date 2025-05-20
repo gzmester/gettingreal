@@ -14,7 +14,7 @@
           "dato": "2025-05-20T10:15:30Z",
           "tokensBrugt": 250,
           "cost": 0.75,
-          "aiModel": "gpt-4-turbo"
+          "IdaiModel": "model_2"
         }
       ]
     },
@@ -32,7 +32,7 @@
           "dato": "2025-05-20T14:00:00Z",
           "tokensBrugt": 100,
           "cost": 0.30,
-          "aiModel": "gpt-4"
+          "IdaiModel": "model_1"
         }
       ]
     }

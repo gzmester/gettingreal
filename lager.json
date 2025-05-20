@@ -1,0 +1,52 @@
+{
+  "kunder": [
+    {
+      "navn": "Anders Hansen",
+      "id": 1,
+      "pris": 299.95,
+      "forbrug": 124.50,
+      "tokenTilgaengelige": 10000,
+      "samtalerBrugt": 3,
+      "kundeId": "KH001",
+      "samtaler": [
+        {
+          "id": 101,
+          "dato": "2025-05-20T10:15:30Z",
+          "tokensBrugt": 250,
+          "cost": 0.75,
+          "aiModel": "gpt-4-turbo"
+        }
+      ]
+    },
+    {
+      "navn": "Maria Jensen",
+      "id": 2,
+      "pris": 149.95,
+      "forbrug": 75.00,
+      "tokenTilgaengelige": 5000,
+      "samtalerBrugt": 1,
+      "kundeId": "KH002",
+      "samtaler": [
+        {
+          "id": 104,
+          "dato": "2025-05-20T14:00:00Z",
+          "tokensBrugt": 100,
+          "cost": 0.30,
+          "aiModel": "gpt-4"
+        }
+      ]
+    }
+  ],
+  "aiModels": [
+    {
+      "aiModel": "gpt-4-turbo",
+      "id": "model_1",
+      "prisPerToken": 0.003
+    },
+    {
+      "aiModel": "gpt-4",
+      "id": "model_2",
+      "prisPerToken": 0.0035
+    }
+  ]
+}

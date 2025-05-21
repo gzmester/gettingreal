@@ -1,6 +1,6 @@
 using System.IO;
 using System.Text.Json;
-
+// måske det skal se sådan her ud? så man kan trække de forskelle data ud, som enkeltvis. 
 public class Lager
 {
     private static Lager _instance;

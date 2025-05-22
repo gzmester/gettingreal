@@ -1,6 +1,9 @@
 using System.IO;
 using System.Text.Json;
-// måske det skal se sådan her ud? så man kan trække de forskelle data ud, som enkeltvis. 
+using GettingReal.Model;
+
+namespace GettingReal.Services;
+
 public class Lager
 {
     private static Lager _instance;
@@ -15,7 +18,7 @@ public class Lager
 
     private void LoadDatabase()
     {
-        string jsonPath = "../lager.json";
+        string jsonPath = "lager.json"; // Ret hvis filen ligger et andet sted
         if (File.Exists(jsonPath))
         {
             string json = File.ReadAllText(jsonPath);

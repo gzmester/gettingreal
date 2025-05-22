@@ -1,4 +1,5 @@
 namespace GettingReal.Model;
+using GettingReal.Services;
 using System;
 
 public class AISamtale
@@ -18,14 +19,23 @@ public class AISamtale
         Cost = 0.0;
     }
 
-    public double CalculatePrice(double prisPerToken)
+    public AiModel GetAiModel()
     {
-        Cost = TokensBrugt * prisPerToken;
+        return Lager.Instance.HentModel(IdAiModel);
+    }
+
+    public double CalculatePrice()
+    {
+        var model = GetAiModel();
+        if (model != null)
+        {
+            Cost = TokensBrugt * model.prisPerToken;
+        }
         return Cost;
     }
 
     public override string ToString()
     {
-        return $"AI Model ID: {IdAiModel}, Date: {Dato}, Tokens Used: {TokensBrugt}, ID: {Id}, Cost: {Cost}";
+        return $"AI Model: {GetAiModel()?.aiModel ?? "ukendt"}, Tokens: {TokensBrugt}, Pris: {Cost:0.00}";
     }
 }

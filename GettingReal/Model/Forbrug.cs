@@ -24,6 +24,24 @@ namespace GettingReal.Model
             }
         }
 
+        public void addSamtale(AISamtale samtale)
+        {
+            Samtaler.Add(samtale);
+        }
+        public void createSamtale(string idAiModel, DateTime dato, int tokensBrugt, string id)
+        {
+            Samtaler.Add(new AISamtale(idAiModel,dato, tokensBrugt, id));
+        }
+
+        public double CalculatePriceForCustomer()
+        {
+            double cost = 0;
+            foreach (AISamtale item in Samtaler)
+            {
+                cost += item.Cost;
+            }
+            return cost;
+        }
 
     }
 }

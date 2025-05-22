@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using GettingReal.Services;
+using GettingReal.Model;
 
 namespace GettingReal.Model
 {
@@ -10,18 +11,18 @@ namespace GettingReal.Model
         public int TokensTilgaengelige { get; set; }
         public int SamtalerBrugt { get; set; }
         public string KundeId { get; set; }
-        public List<Samtale> Samtaler { get; set; }
+        public List<AISamtale> Samtaler { get; set; }
 
         public Forbrug()
         {
-            Samtaler = new List<Samtale>();
+            Samtaler = new List<AISamtale>();
         }
 
         public Forbrug(int tokensTilgaengelige, string kundeId)
         {
             TokensTilgaengelige = tokensTilgaengelige;
             KundeId = kundeId;
-            Samtaler = new List<Samtale>();
+            Samtaler = new List<AISamtale>();
         }
 
         public double CalculatePrice()

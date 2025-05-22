@@ -18,7 +18,7 @@ public class Lager
 
     private void LoadDatabase()
     {
-        string jsonPath = "lager.json"; // Ret hvis filen ligger et andet sted
+        string jsonPath = "lager.json"; 
         if (File.Exists(jsonPath))
         {
             string json = File.ReadAllText(jsonPath);

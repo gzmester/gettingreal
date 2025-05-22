@@ -5,8 +5,35 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GettingReal"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-
+        Title="MainWindow" Height="600" Width="900">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="2*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal" Grid.Row="0" Margin="0,0,0,10" VerticalAlignment="Top" >
+            <TextBlock Text="Indtast kunde-id:" VerticalAlignment="Center" Margin="0,0,5,0"/>
+            <TextBox x:Name="SearchKundeIdBox" Width="150" Margin="0,0,10,0"/>
+            <Button Content="Find Kunde" Width="100" Margin="0,0,10,0" Click="FindKunde_Click"/>
+            <Button Content="Vis Forbrug" Width="100" Margin="0,0,10,0" Click="VisForbrug_Click"/>
+            <Button Content="Vis Alle AI Modeller" Width="150" Click="VisAlleAiModeller_Click"/>
+            <Button Content="Vis Alle Kunders Forbrug" Width="170" Margin="10,0,0,0" Click="VisAlleKundersForbrug_Click"/>
+        </StackPanel>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*" />
+                <ColumnDefinition Width="2*" />
+            </Grid.ColumnDefinitions>
+            <GroupBox Header="Kunder" Grid.Column="0" Margin="5">
+                <ListBox ItemsSource="{Binding Kunder}" DisplayMemberPath="Navn" SelectedItem="{Binding SelectedKunde}" />
+            </GroupBox>
+            <GroupBox Header="AI Modeller" Grid.Column="1" Margin="5">
+                <ListBox ItemsSource="{Binding AiModels}" DisplayMemberPath="aiModel" SelectedItem="{Binding SelectedAiModel}" />
+            </GroupBox>
+        </Grid>
+        <StackPanel Grid.Row="2" Margin="5">
+            <TextBlock x:Name="ResultTextBlock" FontWeight="Bold" FontSize="14" TextWrapping="Wrap"/>
+        </StackPanel>
     </Grid>
 </Window>

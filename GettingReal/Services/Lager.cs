@@ -6,8 +6,8 @@ namespace GettingReal.Services;
 
 public class Lager
 {
-    private static Lager _instance;
-    private Database _database;
+    private static Lager? _instance;
+    private Database _database = new Database();
 
     private Lager()
     {
@@ -18,14 +18,27 @@ public class Lager
 
     private void LoadDatabase()
     {
-        string jsonPath = "lager.json"; 
+        string jsonPath = "lager.json";
         if (File.Exists(jsonPath))
         {
             string json = File.ReadAllText(jsonPath);
-            _database = JsonSerializer.Deserialize<Database>(json, new JsonSerializerOptions
+            var db = JsonSerializer.Deserialize<Database>(json, new JsonSerializerOptions
             {
                 PropertyNameCaseInsensitive = true
             });
+            // Fallback hvis deserialisering fejler eller lister er null
+            if (db == null)
+            {
+                _database = new Database();
+                Console.WriteLine("Database kunne ikke indlæses, opretter ny database.");
+            }
+            else
+            {
+                db.kunder ??= new List<Kunde>();
+                db.aiModels ??= new List<AiModel>();
+                _database = db;
+                Console.WriteLine("Database indlæst.");
+            }
         }
         else
         {
@@ -33,8 +46,8 @@ public class Lager
         }
     }
 
-    public List<Kunde> HentAlleKunder() => _database.kunder;
-    public Kunde HentKunde(string id) => _database.kunder.FirstOrDefault(k => k.id == id);
-    public List<AiModel> HentAlleModeller() => _database.aiModels;
-    public AiModel HentModel(string modelId) => _database.aiModels.FirstOrDefault(m => m.id == modelId);
+    public List<Kunde> HentAlleKunder() => _database.kunder ?? new List<Kunde>();
+    public Kunde HentKunde(string id) => _database.kunder?.FirstOrDefault(k => k.Id == id);
+    public List<AiModel> HentAlleModeller() => _database.aiModels ?? new List<AiModel>();
+    public AiModel HentModel(string modelId) => _database.aiModels?.FirstOrDefault(m => m.id == modelId);
 }

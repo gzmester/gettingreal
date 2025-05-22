@@ -10,7 +10,7 @@ namespace GettingReal.Model
     {
         public int TokensTilgaengelige { get; set; }
         public int SamtalerBrugt { get; set; }
-        public string KundeId { get; set; }
+        public string KundeId { get; set; } = string.Empty;
         public List<AISamtale> Samtaler { get; set; }
 
         public Forbrug()

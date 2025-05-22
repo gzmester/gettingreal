@@ -1,6 +1,6 @@
-namespace GettingReal.Model;
 using GettingReal.Services;
 using System;
+namespace GettingReal.Model;
 
 public class AISamtale
 {

@@ -4,13 +4,15 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GettingReal"
+        xmlns:vm="clr-namespace:GettingReal.ViewModel"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
         mc:Ignorable="d"
         Title="AI Samtale Analyse" Height="700" Width="1000"
         WindowStartupLocation="CenterScreen"
         Background="#FF2D2D30">
     <Window.Resources>
         <Style TargetType="GroupBox">
-            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Foreground" Value="HotPink"/>
             <Setter Property="BorderBrush" Value="#FF4F4F53"/>
             <Setter Property="BorderThickness" Value="1"/>
             <Setter Property="Padding" Value="5"/>
@@ -18,12 +20,12 @@
         </Style>
         <Style TargetType="ListBox">
             <Setter Property="Background" Value="#FF3F3F46"/>
-            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Foreground" Value="HotPink"/>
             <Setter Property="BorderThickness" Value="0"/>
         </Style>
         <Style TargetType="Button">
             <Setter Property="Background" Value="#FF007ACC"/>
-            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Foreground" Value="HotPink"/>
             <Setter Property="BorderThickness" Value="0"/>
             <Setter Property="Padding" Value="10,5"/>
             <Setter Property="Margin" Value="5,0"/>
@@ -33,30 +35,73 @@
         </Style>
         <Style TargetType="TextBox">
             <Setter Property="Background" Value="#FF3F3F46"/>
-            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Foreground" Value="HotPink"/>
             <Setter Property="BorderBrush" Value="#FF4F4F53"/>
             <Setter Property="Padding" Value="5"/>
             <Setter Property="CaretBrush" Value="White"/>
         </Style>
         <Style TargetType="TextBlock">
-            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Foreground" Value="HotPink"/>
         </Style>
+        <Style TargetType="ComboBox" BasedOn="{x:Null}"> 
+            <!-- Helt sort baggrundstema for ComboBox -->
+            <Setter Property="Background" Value="Black"/> 
+            <Setter Property="Foreground" Value="HotPink"/> 
+            <Setter Property="BorderBrush" Value="#FF505050"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Padding" Value="5"/>
+            <Setter Property="Margin" Value="5,0"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/> 
+            <Style.Resources>
+                <Style TargetType="ComboBoxItem">
+                    <Setter Property="Foreground" Value="HotPink"/> 
+                    <Setter Property="Background" Value="Black"/> 
+                    <Style.Triggers>
+                        <Trigger Property="IsHighlighted" Value="True">
+                            <Setter Property="Background" Value="#FF333333"/> 
+                            <Setter Property="Foreground" Value="HotPink"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+                <Style TargetType="ToggleButton"> 
+                    <Setter Property="Background" Value="Black"/> 
+                    <Setter Property="Foreground" Value="HotPink"/> 
+                    <Setter Property="BorderBrush" Value="#FF505050"/> 
+                </Style>
+            </Style.Resources>
+        </Style>
+        <ObjectDataProvider x:Key="SortKundeCriteriaValues" MethodName="GetValues" ObjectType="{x:Type sys:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="vm:SortKundeCriteria"/>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+        <ObjectDataProvider x:Key="SortAiModelCriteriaValues" MethodName="GetValues" ObjectType="{x:Type sys:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="vm:SortAiModelCriteria"/>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+        <ObjectDataProvider x:Key="SortDirectionValues" MethodName="GetValues" ObjectType="{x:Type sys:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="vm:SortDirection"/>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
     </Window.Resources>
     <Grid Margin="10">
         <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0,0,0,20">
-            <TextBlock Text="&#xE9A1;" FontFamily="Segoe MDL2 Assets" FontSize="36" VerticalAlignment="Center" Margin="0,0,10,0" Foreground="#FF007ACC"/>
-            <TextBlock Text="AI Samtale Analyse Værktøj" FontSize="28" FontWeight="Bold" VerticalAlignment="Center"/>
+        <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0,0,0,10">
+            <TextBlock Text="&#xE9A1;" FontFamily="Segoe MDL2 Assets" FontSize="36" VerticalAlignment="Center" Margin="0,0,10,0" Foreground="HotPink"/>
+            <TextBlock Text="AI Samtale Analyse Værktøj" FontSize="28" FontWeight="Bold" VerticalAlignment="Center" Foreground="HotPink"/>
         </StackPanel>
 
         <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="0,0,0,10" VerticalAlignment="Top" >
-            <TextBlock Text="Kunde ID:" VerticalAlignment="Center" Margin="0,0,5,0"/>
+            <TextBlock Text="Kunde ID:" VerticalAlignment="Center" Margin="0,0,5,0" Foreground="HotPink"/>
             <TextBox x:Name="SearchKundeIdBox" Width="150" Margin="0,0,10,0"/>
             <Button Content="&#xE721;" ToolTip="Find Kunde" Width="50" Click="FindKunde_Click"/>
             <Button Content="&#xE77B;" ToolTip="Vis Forbrug for Valgt Kunde" Width="50" Click="VisForbrug_Click"/>
@@ -64,7 +109,26 @@
             <Button Content="&#xE716;" ToolTip="Vis Alle Kunders Forbrug" Width="50" Click="VisAlleKundersForbrug_Click"/>
         </StackPanel>
 
-        <Grid Grid.Row="2">
+        <Grid Grid.Row="2" Margin="0,0,0,10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <!-- Sortering for Kunder -->
+            <StackPanel x:Name="KundeSortOptionsPanel" Orientation="Horizontal" Grid.Column="0" Visibility="Collapsed">
+                <TextBlock Text="Sortér Kunder:" VerticalAlignment="Center" Foreground="HotPink"/>
+                <ComboBox x:Name="KundeSortCriteriaComboBox" Width="150" ItemsSource="{Binding Source={StaticResource SortKundeCriteriaValues}}" SelectionChanged="KundeSort_SelectionChanged"/>
+                <ComboBox x:Name="KundeSortDirectionComboBox" Width="120" ItemsSource="{Binding Source={StaticResource SortDirectionValues}}" SelectedIndex="0" SelectionChanged="KundeSort_SelectionChanged"/>
+            </StackPanel>
+            <!-- Sortering for AI Modeller -->
+            <StackPanel Orientation="Horizontal" Grid.Column="1">
+                <TextBlock Text="Sortér AI Modeller:" VerticalAlignment="Center" Foreground="HotPink"/>
+                <ComboBox x:Name="AiModelSortCriteriaComboBox" Width="150" ItemsSource="{Binding Source={StaticResource SortAiModelCriteriaValues}}" SelectionChanged="AiModelSort_SelectionChanged"/>
+                <ComboBox x:Name="AiModelSortDirectionComboBox" Width="120" ItemsSource="{Binding Source={StaticResource SortDirectionValues}}" SelectedIndex="0" SelectionChanged="AiModelSort_SelectionChanged"/>
+            </StackPanel>
+        </Grid>
+
+        <Grid Grid.Row="3">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
@@ -77,9 +141,9 @@
             </GroupBox>
         </Grid>
 
-        <GroupBox Grid.Row="3" Header="Resultater og Detaljer" Margin="5,10,5,5" MinHeight="150">
+        <GroupBox Grid.Row="4" Header="Resultater og Detaljer" Margin="5,10,5,5" MinHeight="150">
             <ScrollViewer VerticalScrollBarVisibility="Auto">
-                <TextBlock x:Name="ResultTextBlock" Text="Velkommen! Søg efter en kunde eller vælg en fra listen for at se detaljer." FontWeight="Normal" FontSize="14" TextWrapping="Wrap" Padding="5" Foreground="#FFB0B0B0"/>
+                <TextBlock x:Name="ResultTextBlock" Text="Velkommen! Søg efter en kunde eller vælg en fra listen for at se detaljer." FontWeight="Normal" FontSize="14" TextWrapping="Wrap" Padding="5" Foreground="HotPink"/>
             </ScrollViewer>
         </GroupBox>
     </Grid>

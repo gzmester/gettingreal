@@ -1,47 +1,54 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using GettingReal.Services;
 
 namespace GettingReal.Model
 {
     public class Forbrug
     {
-        public int TokensTilgængelige {  get; set; }
-        public int SamtalerBrugt {  get; set; }
-        public string KundeId {  get; set; }
-        public List<AISamtale> Samtaler {  get; set; }
+        public int TokensTilgaengelige { get; set; }
+        public int SamtalerBrugt { get; set; }
+        public string KundeId { get; set; }
+        public List<Samtale> Samtaler { get; set; }
 
-        public Forbrug(int tokensTilgængelige, string kundeId) 
-        { 
-            TokensTilgængelige = tokensTilgængelige;
-            KundeId = kundeId;
-            Samtaler = new List<AISamtale>();
-            if (Samtaler != null)
+        public double CalculatePrice()
+        {
+            double total = 0;
+            foreach (var samtale in Samtaler)
             {
-                SamtalerBrugt = Samtaler.Count;
+                total += samtale.Cost * samtale.TokensBrugt;
             }
+            return total;
         }
 
-        public void addSamtale(AISamtale samtale)
+        public static double HentPrisForKunde(string kundeId)
         {
-            Samtaler.Add(samtale);
-        }
-        public void createSamtale(string idAiModel, DateTime dato, int tokensBrugt, string id)
-        {
-            Samtaler.Add(new AISamtale(idAiModel,dato, tokensBrugt, id));
+            var kunde = Lager.Instance.HentKunde(kundeId);
+            return kunde?.forbrug?.CalculatePrice() ?? 0;
         }
 
-        public double CalculatePriceForCustomer()
+        public static List<(Kunde kunde, double totalPris)> HentAlleKundersForbrug()
         {
-            double cost = 0;
-            foreach (AISamtale item in Samtaler)
+            var kunder = Lager.Instance.HentAlleKunder();
+            var resultat = new List<(Kunde, double)>();
+
+            foreach (var kunde in kunder)
             {
-                cost += item.Cost;
+                double totalPris = kunde.forbrug?.CalculatePrice() ?? 0;
+                resultat.Add((kunde, totalPris));
             }
-            return cost;
-        }
 
+            return resultat;
+        }
+    }
+
+    public class Samtale
+    {
+        public string Id { get; set; }
+        public DateTime Dato { get; set; }
+        public int TokensBrugt { get; set; }
+        public double Cost { get; set; }
+        public string IdaiModel { get; set; }
     }
 }

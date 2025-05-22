@@ -5,35 +5,82 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GettingReal"
         mc:Ignorable="d"
-        Title="MainWindow" Height="600" Width="900">
+        Title="AI Samtale Analyse" Height="700" Width="1000"
+        WindowStartupLocation="CenterScreen"
+        Background="#FF2D2D30">
+    <Window.Resources>
+        <Style TargetType="GroupBox">
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderBrush" Value="#FF4F4F53"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Padding" Value="5"/>
+            <Setter Property="Margin" Value="5"/>
+        </Style>
+        <Style TargetType="ListBox">
+            <Setter Property="Background" Value="#FF3F3F46"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderThickness" Value="0"/>
+        </Style>
+        <Style TargetType="Button">
+            <Setter Property="Background" Value="#FF007ACC"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Padding" Value="10,5"/>
+            <Setter Property="Margin" Value="5,0"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="FontFamily" Value="Segoe MDL2 Assets"/>
+            <Setter Property="FontSize" Value="16"/>
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="Background" Value="#FF3F3F46"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderBrush" Value="#FF4F4F53"/>
+            <Setter Property="Padding" Value="5"/>
+            <Setter Property="CaretBrush" Value="White"/>
+        </Style>
+        <Style TargetType="TextBlock">
+            <Setter Property="Foreground" Value="White"/>
+        </Style>
+    </Window.Resources>
     <Grid Margin="10">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="2*"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <StackPanel Orientation="Horizontal" Grid.Row="0" Margin="0,0,0,10" VerticalAlignment="Top" >
-            <TextBlock Text="Indtast kunde-id:" VerticalAlignment="Center" Margin="0,0,5,0"/>
-            <TextBox x:Name="SearchKundeIdBox" Width="150" Margin="0,0,10,0"/>
-            <Button Content="Find Kunde" Width="100" Margin="0,0,10,0" Click="FindKunde_Click"/>
-            <Button Content="Vis Forbrug" Width="100" Margin="0,0,10,0" Click="VisForbrug_Click"/>
-            <Button Content="Vis Alle AI Modeller" Width="150" Click="VisAlleAiModeller_Click"/>
-            <Button Content="Vis Alle Kunders Forbrug" Width="170" Margin="10,0,0,0" Click="VisAlleKundersForbrug_Click"/>
+
+        <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0,0,0,20">
+            <TextBlock Text="&#xE9A1;" FontFamily="Segoe MDL2 Assets" FontSize="36" VerticalAlignment="Center" Margin="0,0,10,0" Foreground="#FF007ACC"/>
+            <TextBlock Text="AI Samtale Analyse Værktøj" FontSize="28" FontWeight="Bold" VerticalAlignment="Center"/>
         </StackPanel>
-        <Grid Grid.Row="1">
+
+        <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="0,0,0,10" VerticalAlignment="Top" >
+            <TextBlock Text="Kunde ID:" VerticalAlignment="Center" Margin="0,0,5,0"/>
+            <TextBox x:Name="SearchKundeIdBox" Width="150" Margin="0,0,10,0"/>
+            <Button Content="&#xE721;" ToolTip="Find Kunde" Width="50" Click="FindKunde_Click"/>
+            <Button Content="&#xE77B;" ToolTip="Vis Forbrug for Valgt Kunde" Width="50" Click="VisForbrug_Click"/>
+            <Button Content="&#xE946;" ToolTip="Vis Alle AI Modeller" Width="50" Click="VisAlleAiModeller_Click"/>
+            <Button Content="&#xE716;" ToolTip="Vis Alle Kunders Forbrug" Width="50" Click="VisAlleKundersForbrug_Click"/>
+        </StackPanel>
+
+        <Grid Grid.Row="2">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="2*" />
-                <ColumnDefinition Width="2*" />
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <GroupBox Header="Kunder" Grid.Column="0" Margin="5">
+            <GroupBox Header="Kunder" Grid.Column="0">
                 <ListBox ItemsSource="{Binding Kunder}" DisplayMemberPath="Navn" SelectedItem="{Binding SelectedKunde}" />
             </GroupBox>
-            <GroupBox Header="AI Modeller" Grid.Column="1" Margin="5">
+            <GroupBox Header="AI Modeller" Grid.Column="1">
                 <ListBox ItemsSource="{Binding AiModels}" DisplayMemberPath="aiModel" SelectedItem="{Binding SelectedAiModel}" />
             </GroupBox>
         </Grid>
-        <StackPanel Grid.Row="2" Margin="5">
-            <TextBlock x:Name="ResultTextBlock" FontWeight="Bold" FontSize="14" TextWrapping="Wrap"/>
-        </StackPanel>
+
+        <GroupBox Grid.Row="3" Header="Resultater og Detaljer" Margin="5,10,5,5" MinHeight="150">
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <TextBlock x:Name="ResultTextBlock" Text="Velkommen! Søg efter en kunde eller vælg en fra listen for at se detaljer." FontWeight="Normal" FontSize="14" TextWrapping="Wrap" Padding="5" Foreground="#FFB0B0B0"/>
+            </ScrollViewer>
+        </GroupBox>
     </Grid>
 </Window>

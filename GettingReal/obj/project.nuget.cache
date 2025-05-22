@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "V3hawIJsY58=",
+  "dgSpecHash": "t5yETvR2fD0=",
   "success": true,
-  "projectFilePath": "C:\\xampp\\htdocs\\Gettingreal\\GettingReal\\GettingReal.csproj",
+  "projectFilePath": "C:\\xampp\\htdocs\\gettingreal\\GettingReal\\GettingReal.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Rallo\\.nuget\\packages\\microsoft.netcore.app.ref\\8.0.12\\microsoft.netcore.app.ref.8.0.12.nupkg.sha512",
     "C:\\Users\\Rallo\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\8.0.12\\microsoft.windowsdesktop.app.ref.8.0.12.nupkg.sha512",

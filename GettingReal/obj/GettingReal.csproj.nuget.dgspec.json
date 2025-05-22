@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\xampp\\htdocs\\Gettingreal\\GettingReal\\GettingReal.csproj": {}
+    "C:\\xampp\\htdocs\\gettingreal\\GettingReal\\GettingReal.csproj": {}
   },
   "projects": {
-    "C:\\xampp\\htdocs\\Gettingreal\\GettingReal\\GettingReal.csproj": {
+    "C:\\xampp\\htdocs\\gettingreal\\GettingReal\\GettingReal.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\xampp\\htdocs\\Gettingreal\\GettingReal\\GettingReal.csproj",
+        "projectUniqueName": "C:\\xampp\\htdocs\\gettingreal\\GettingReal\\GettingReal.csproj",
         "projectName": "GettingReal",
-        "projectPath": "C:\\xampp\\htdocs\\Gettingreal\\GettingReal\\GettingReal.csproj",
+        "projectPath": "C:\\xampp\\htdocs\\gettingreal\\GettingReal\\GettingReal.csproj",
         "packagesPath": "C:\\Users\\Rallo\\.nuget\\packages\\",
-        "outputPath": "C:\\xampp\\htdocs\\Gettingreal\\GettingReal\\obj\\",
+        "outputPath": "C:\\xampp\\htdocs\\gettingreal\\GettingReal\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Rallo\\AppData\\Roaming\\NuGet\\NuGet.Config"

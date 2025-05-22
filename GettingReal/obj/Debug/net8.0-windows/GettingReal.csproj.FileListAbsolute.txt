@@ -1,0 +1,4 @@
+C:\xampp\htdocs\Gettingreal\GettingReal\obj\Debug\net8.0-windows\MainWindow.g.cs
+C:\xampp\htdocs\Gettingreal\GettingReal\obj\Debug\net8.0-windows\App.g.cs
+C:\xampp\htdocs\Gettingreal\GettingReal\obj\Debug\net8.0-windows\GettingReal_MarkupCompile.cache
+C:\xampp\htdocs\Gettingreal\GettingReal\obj\Debug\net8.0-windows\GettingReal_MarkupCompile.lref

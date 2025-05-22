@@ -1,4 +1,5 @@
 ﻿using System;
+using GettingReal.Model;
 
 public class Kunde
 {
@@ -17,14 +18,6 @@ public class Kunde
 		Id = id;
 		Pris = pris;
 		this.forbrug = forbrug;
-	}
-
-	public Kunde(string navn, string id, double pris)
-	{
-		Navn = navn;
-		Id = id;
-		Pris = pris;
-		this.forbrug = new Forbrug(Id);
 	}
 
 	public Kunde(string navn, string id, double pris, int tokensTilgængelige)

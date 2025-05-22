@@ -16,7 +16,7 @@ public class AISamtale
         Dato = dato;
         TokensBrugt = tokensBrugt;
         Id = id;
-        Cost = 0.0;
+        CalculatePrice();
     }
 
     public AiModel GetAiModel()

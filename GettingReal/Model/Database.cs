@@ -1,9 +1,13 @@
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
 using GettingReal.Model;
 
 public class Database
 {
-    public List<Kunde> kunder { get; set; } = new(); // Initialiseres
+    [JsonPropertyName("kunder")]
+    public List<Kunde> kunder { get; set; } = new();
+
+    [JsonPropertyName("aiModels")]
     public List<AiModel> aiModels { get; set; } = new();
 }
 

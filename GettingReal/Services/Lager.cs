@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using System.IO;
 using System.Text.Json;
 using GettingReal.Model;
@@ -18,31 +19,40 @@ public class Lager
 
     private void LoadDatabase()
     {
-        string jsonPath = "lager.json";
-        if (File.Exists(jsonPath))
+        string jsonPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Services", "lager.json");
+        Debug.WriteLine($"Forsøger at indlæse fra: {jsonPath}");
+        try
         {
-            string json = File.ReadAllText(jsonPath);
-            var db = JsonSerializer.Deserialize<Database>(json, new JsonSerializerOptions
+            if (File.Exists(jsonPath))
             {
-                PropertyNameCaseInsensitive = true
-            });
-            // Fallback hvis deserialisering fejler eller lister er null
-            if (db == null)
-            {
-                _database = new Database();
-                Console.WriteLine("Database kunne ikke indlæses, opretter ny database.");
+                string json = File.ReadAllText(jsonPath);
+                Debug.WriteLine($"JSON-indhold: {json}");
+                var db = JsonSerializer.Deserialize<Database>(json, new JsonSerializerOptions
+                {
+                    PropertyNameCaseInsensitive = true
+                });
+
+                if (db == null)
+                {
+                    _database = new Database();
+                    Debug.WriteLine("Database kunne ikke indlæses. Opretter ny database.");
+                }
+                else
+                {
+                    _database = db;
+                    Debug.WriteLine($"Database indlæst. Antal kunder: {_database.kunder?.Count}, Antal AI-modeller: {_database.aiModels?.Count}");
+                }
             }
             else
             {
-                db.kunder ??= new List<Kunde>();
-                db.aiModels ??= new List<AiModel>();
-                _database = db;
-                Console.WriteLine("Database indlæst.");
+                _database = new Database { kunder = new List<Kunde>(), aiModels = new List<AiModel>() };
+                Debug.WriteLine("lager.json ikke fundet. Opretter ny database.");
             }
         }
-        else
+        catch (Exception ex)
         {
-            _database = new Database { kunder = new List<Kunde>(), aiModels = new List<AiModel>() };
+            Debug.WriteLine($"Fejl under indlæsning af database: {ex.Message}");
+            _database = new Database();
         }
     }
 

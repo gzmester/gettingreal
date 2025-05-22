@@ -1,18 +1,26 @@
 ﻿using System;
+using System.Text.Json.Serialization;
 using GettingReal.Model;
 
 public class Kunde
 {
-	public string Navn { get; set; }
-	public string Id { get; set; }
+    [JsonPropertyName("navn")]
+    public string Navn { get; set; }
 
-	public double Pris { get; set; }
+    [JsonPropertyName("id")]
+    public string Id { get; set; }
 
-	public Forbrug forbrug { get; set; }
+    [JsonPropertyName("pris")]
+    public double Pris { get; set; }
+
+    [JsonPropertyName("forbrug")]
+    public Forbrug forbrug { get; set; }
+
+    public Kunde() { }
 
 
 
-	public Kunde(string navn, string id, double pris, Forbrug forbrug)
+    public Kunde(string navn, string id, double pris, Forbrug forbrug)
 	{
 		Navn = navn;
 		Id = id;

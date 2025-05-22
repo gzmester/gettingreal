@@ -1,16 +1,29 @@
 using GettingReal.Services;
 using System;
+using System.Text.Json.Serialization;
 namespace GettingReal.Model;
 
 public class AISamtale
 {
+
+    [JsonPropertyName("IdaiModel")]
     public string IdAiModel { get; set; }
+
+    [JsonPropertyName("dato")]
     public DateTime Dato { get; set; }
+
+    [JsonPropertyName("tokensBrugt")]
     public int TokensBrugt { get; set; }
-    public string Id { get; set; }
+
+    [JsonPropertyName("id")]
+    public int Id { get; set; }
+
+    [JsonPropertyName("cost")]
     public double Cost { get; set; }
 
-    public AISamtale(string idAiModel, DateTime dato, int tokensBrugt, string id)
+    public AISamtale() { }
+
+    public AISamtale(string idAiModel, DateTime dato, int tokensBrugt, int id)
     {
         IdAiModel = idAiModel;
         Dato = dato;

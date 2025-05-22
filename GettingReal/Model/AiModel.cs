@@ -10,6 +10,8 @@ namespace GettingReal.Model
         public string id { get; set; }
         public double prisPerToken { get; set; }
 
+        public AiModel() { }
+
         public AiModel(string aiModel, string id, double prisPerToken)
         {
             this.aiModel = aiModel;

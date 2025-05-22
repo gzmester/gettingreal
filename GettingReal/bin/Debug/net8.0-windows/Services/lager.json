@@ -1,0 +1,160 @@
+{
+  "kunder": [
+    {
+      "navn": "Anders Hansen",
+      "id": "KH001",
+      "pris": 299.95,
+      "forbrug": {
+        "tokensTilgaengelige": 10000,
+        "samtalerBrugt": 3,
+        "kundeId": "KH001",
+        "samtaler": [
+          {
+            "id": 101,
+            "dato": "2025-05-20T10:15:30Z",
+            "tokensBrugt": 250,
+            "cost": 0.75,
+            "IdaiModel": "model_2"
+          },
+          {
+            "id": 102,
+            "dato": "2025-05-21T12:30:00Z",
+            "tokensBrugt": 400,
+            "cost": 1.40,
+            "IdaiModel": "model_2"
+          },
+          {
+            "id": 103,
+            "dato": "2025-05-22T08:00:00Z",
+            "tokensBrugt": 150,
+            "cost": 0.53,
+            "IdaiModel": "model_1"
+          }
+        ]
+      }
+    },
+    {
+      "navn": "Maria Jensen",
+      "id": "KH002",
+      "pris": 149.95,
+      "forbrug": {
+        "tokensTilgaengelige": 5000,
+        "samtalerBrugt": 2,
+        "kundeId": "KH002",
+        "samtaler": [
+          {
+            "id": 104,
+            "dato": "2025-05-20T14:00:00Z",
+            "tokensBrugt": 100,
+            "cost": 0.30,
+            "IdaiModel": "model_1"
+          },
+          {
+            "id": 105,
+            "dato": "2025-05-21T17:45:00Z",
+            "tokensBrugt": 300,
+            "cost": 1.05,
+            "IdaiModel": "model_2"
+          }
+        ]
+      }
+    },
+    {
+      "navn": "Lars Mikkelsen",
+      "id": "KH003",
+      "pris": 199.00,
+      "forbrug": {
+        "tokensTilgaengelige": 7500,
+        "samtalerBrugt": 1,
+        "kundeId": "KH003",
+        "samtaler": [
+          {
+            "id": 106,
+            "dato": "2025-05-22T09:30:00Z",
+            "tokensBrugt": 600,
+            "cost": 2.10,
+            "IdaiModel": "model_2"
+          }
+        ]
+      }
+    },
+    {
+      "navn": "Sofie Larsen",
+      "id": "KH004",
+      "pris": 99.95,
+      "forbrug": {
+        "tokensTilgaengelige": 3000,
+        "samtalerBrugt": 2,
+        "kundeId": "KH004",
+        "samtaler": [
+          {
+            "id": 107,
+            "dato": "2025-05-20T15:20:00Z",
+            "tokensBrugt": 200,
+            "cost": 0.60,
+            "IdaiModel": "model_1"
+          },
+          {
+            "id": 108,
+            "dato": "2025-05-22T11:00:00Z",
+            "tokensBrugt": 100,
+            "cost": 0.30,
+            "IdaiModel": "model_1"
+          }
+        ]
+      }
+    },
+    {
+      "navn": "Mikkel Sørensen",
+      "id": "KH005",
+      "pris": 399.00,
+      "forbrug": {
+        "tokensTilgaengelige": 15000,
+        "samtalerBrugt": 4,
+        "kundeId": "KH005",
+        "samtaler": [
+          {
+            "id": 109,
+            "dato": "2025-05-19T09:00:00Z",
+            "tokensBrugt": 500,
+            "cost": 1.75,
+            "IdaiModel": "model_2"
+          },
+          {
+            "id": 110,
+            "dato": "2025-05-20T13:00:00Z",
+            "tokensBrugt": 300,
+            "cost": 0.90,
+            "IdaiModel": "model_1"
+          },
+          {
+            "id": 111,
+            "dato": "2025-05-21T10:30:00Z",
+            "tokensBrugt": 200,
+            "cost": 0.70,
+            "IdaiModel": "model_2"
+          },
+          {
+            "id": 112,
+            "dato": "2025-05-22T12:00:00Z",
+            "tokensBrugt": 400,
+            "cost": 1.20,
+            "IdaiModel": "model_1"
+          }
+        ]
+      }
+    }
+  ],
+  "aiModels": [
+    {
+      "aiModel": "gpt-4-turbo",
+      "id": "model_1",
+      "prisPerToken": 0.003
+    },
+    {
+      "aiModel": "gpt-4",
+      "id": "model_2",
+      "prisPerToken": 0.0035
+    }
+  ]
+}

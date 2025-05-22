@@ -54,5 +54,13 @@ namespace GettingReal.Model
             return resultat;
         }
     }
+       public class Samtale
+    {
+        public string Id { get; set; }
+        public DateTime Dato { get; set; }
+        public int TokensBrugt { get; set; }
+        public double Cost { get; set; }
+        public string IdaiModel { get; set; }
+    }
 
 }

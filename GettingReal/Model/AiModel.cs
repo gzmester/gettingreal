@@ -3,7 +3,7 @@ using System.Text.Json;
 using GettingReal.Services;
 using GettingReal.Model;
 
-namespace GettingReal.Services;
+namespace GettingReal.Model;
 public class AiModel
 {
     public string aiModel { get; set; }

@@ -1,4 +1,5 @@
-﻿using System.Text;
+// Vi har fået lidt hjælp af chatgpt til at generere vores MainWindow.xaml for at få en lidt federe stil end vi ellers ville kunne.
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;

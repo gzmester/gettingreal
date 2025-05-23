@@ -94,9 +94,7 @@ namespace GettingReal
 
         private void VisAlleAiModeller_Click(object sender, RoutedEventArgs e)
         {
-            // Overvej om kunde sorteringspanelet også skal skjules her
-            // KundeSortOptionsPanel.Visibility = Visibility.Collapsed;
-            // _aktuelAlleKundersForbrugListe.Clear();
+       
 
             var modeller = Lager.Instance.HentAlleModeller(); // Hent frisk data
             _viewModel.AiModels.Clear(); // Ryd eksisterende
@@ -104,11 +102,7 @@ namespace GettingReal
 
             if (_viewModel.AiModels != null && _viewModel.AiModels.Count > 0)
             {
-                // Viser kun AI modeller i deres egen ListBox, ResultTextBlock opdateres ikke her
-                // medmindre du specifikt ønsker det.
-                // For nu, lad ResultTextBlock være uændret eller vis en generel besked.
-                // ResultTextBlock.Text = "AI Modeller er opdateret i listen til højre.";
-                // ResultTextBlock.Foreground = Brushes.White;
+        
             }
             else
             {

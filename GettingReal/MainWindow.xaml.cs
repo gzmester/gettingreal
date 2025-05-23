@@ -168,8 +168,6 @@ namespace GettingReal
                     break;
             }
             
-            // Opdater _aktuelAlleKundersForbrugListe med den sorterede liste, hvis du vil beholde sorteringen
-            // _aktuelAlleKundersForbrugListe = sortedList; // Valgfrit, afhængig af om du vil re-sortere fra original hver gang
 
             StringBuilder sb = new StringBuilder("Alle kunders forbrug (sorteret):\n");
             foreach (var t in sortedList)
